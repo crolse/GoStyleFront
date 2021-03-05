@@ -8,8 +8,7 @@
       </thead>
       <tbody>
         <tr v-for="promotion in promotions.data" :key="promotion.id">
-          <router-link :to="'/details/' + promotion.name">
-            <!--          todo-->
+          <router-link :to="'../components/PromotionDetails/' + promotion.name">
             <td>
               {{ promotion.name }}
             </td>
