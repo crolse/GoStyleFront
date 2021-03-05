@@ -2,45 +2,45 @@
   <v-app>
     <v-app-bar app color="red" dark>
       <v-spacer></v-spacer>
-        <v-img justify=""
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-        <v-spacer></v-spacer>
-        <v-btn
-        v-if="show_Button"
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+      <v-img justify=""
+      alt="Vuetify Logo"
+      class="shrink mr-2"
+      contain
+      src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+      transition="scale-transition"
+      width="40"
+      />
+      <v-spacer></v-spacer>
+      <v-btn
+      v-if="show_Button"
+      href="https://github.com/vuetifyjs/vuetify/releases/latest"
+      target="_blank"
+      text
       >
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <HelloWorld />
-    </v-main>
-  </v-app>
+      <v-icon>mdi-open-in-new</v-icon>
+    </v-btn>
+  </v-app-bar>
+  <v-main>
+    <HelloWorld />
+  </v-main>
+</v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+  import HelloWorld from "./components/HelloWorld";
 
-export default {
-  name: "App",
+  export default {
+    name: "App",
 
-  components: {
-    HelloWorld
-  },
-  data: () => ({
-            show_Button: false,
-  
+    components: {
+      HelloWorld
+    },
+    data: () => ({
+      show_Button: false,
+      
     //
   })
-};
+  };
 </script>
 
 
