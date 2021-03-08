@@ -35,18 +35,23 @@
 
     <v-main>
       <HelloWorld />
+      <bottomBar/>
     </v-main>
+
   </v-app>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld";
+import bottomBar from "./components/bottomBar"
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld
+    HelloWorld,
+    bottomBar
+
   },
 
   data: () => ({
