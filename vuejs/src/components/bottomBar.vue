@@ -1,5 +1,5 @@
 <template>
-<div class="footer">
+<div v-if="show_BottomBar" class="footer">
     		<v-btn class="button" id="test1">
     			<v-icon>
     			mdi-format-list-bulleted-square
@@ -15,7 +15,12 @@
 
 <script>
 export default {
-    name: "BottomBar"
+    name: "BottomBar",
+    data: () => ({
+      show_BottomBar: true,
+      
+    //
+  })
   }
 </script>
 
@@ -45,3 +50,4 @@ export default {
 }
 
 </style>
+ 
