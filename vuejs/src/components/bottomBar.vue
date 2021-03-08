@@ -1,11 +1,11 @@
 <template>
-<div v-if="show_BottomBar" class="footer">
-    		<v-btn class="button" id="test1">
+<div class="footer">
+    		<v-btn class="button" id="leftB">
     			<v-icon>
     			mdi-format-list-bulleted-square
     			</v-icon>
     		</v-btn>
-    		<v-btn class="button" id="test2">
+    		<v-btn class="button" id="rightB">
     			<v-icon>
     			 mdi-qrcode-scan
     			</v-icon>
@@ -15,25 +15,20 @@
 
 <script>
 export default {
-    name: "BottomBar",
-    data: () => ({
-      show_BottomBar: true,
-      
-    //
-  })
+    name: "BottomBar"
   }
 </script>
 
 <style>
 
 
-#test1{
+#leftB{
 	background-color: red;
 	color: white;
 	border-radius: 0px;
 }
 
-#test2{
+#rightB{
 	background-color: black;
 	color: white;
 	border-radius: 0px;
