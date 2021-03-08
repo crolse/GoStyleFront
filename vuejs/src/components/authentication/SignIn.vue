@@ -27,8 +27,8 @@
 export default {
   name: "SignIn",
   data: () => ({
-    rules: [(value) => !!value || "Champ requis."],
-  }),
+    rules: [value => !!value || "Champ requis."]
+  })
 };
 </script>
 

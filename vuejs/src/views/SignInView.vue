@@ -13,8 +13,8 @@ import SignIn from "@/components/authentication/SignIn";
 export default {
   name: "SignInView",
   components: {
-    SignIn,
-  },
+    SignIn
+  }
 };
 </script>
 

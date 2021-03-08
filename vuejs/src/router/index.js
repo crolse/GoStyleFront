@@ -10,22 +10,22 @@ const routes = [
   {
     path: "/",
     name: "HelloWorld",
-    component: HelloWorld,
+    component: HelloWorld
   },
   {
     path: "/signIn",
     name: "SignInView",
-    component: SignInView,
+    component: SignInView
   },
   {
     path: "/signUp",
     name: "SignUpView",
-    component: SignUpView,
-  },
+    component: SignUpView
+  }
 ];
 
 const router = new VueRouter({
-  routes,
+  routes
 });
 
 export default router;

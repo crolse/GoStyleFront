@@ -13,8 +13,8 @@ import SignUp from "@/components/authentication/SignUp";
 export default {
   name: "SignUpView",
   components: {
-    SignUp,
-  },
+    SignUp
+  }
 };
 </script>
 

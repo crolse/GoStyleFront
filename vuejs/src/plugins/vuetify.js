@@ -6,7 +6,7 @@ Vue.use(Vuetify);
 export default new Vuetify({
   theme: {
     options: {
-      customProperties: true,
+      customProperties: true
     },
     themes: {
       light: {
@@ -14,8 +14,8 @@ export default new Vuetify({
         secondary: "#457b9d",
         success: "#90be6d",
         error: "#d90429",
-        warning: "#ffbe0b",
-      },
-    },
-  },
+        warning: "#ffbe0b"
+      }
+    }
+  }
 });

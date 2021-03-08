@@ -34,7 +34,7 @@ export default {
   name: "App",
 
   data: () => ({
-    show_Button: false,
-  }),
+    show_Button: false
+  })
 };
 </script>
