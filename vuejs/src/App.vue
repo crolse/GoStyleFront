@@ -34,13 +34,13 @@
     </v-app-bar>
 
     <v-main>
-
+      <CodePromo>
+      </CodePromo>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import CodePromo from "./components/codePromo";
 
 export default {
