@@ -11,7 +11,12 @@
       <v-btn color="primary">
         s'inscrire
       </v-btn>
-      <v-btn class="ma-1" color="secondary" plain @click="$router.push('/')">
+      <v-btn
+        class="ma-1"
+        color="secondary"
+        plain
+        @click="$router.push('/signIn')"
+      >
         Se connecter
       </v-btn>
     </v-card-actions>

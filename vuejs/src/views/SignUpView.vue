@@ -1,7 +1,7 @@
 <template>
   <v-container class="container">
     <div>
-      <v-img :src="require('../assets/Logo.png')" class="logo" />
+      <v-img :src="require('../assets/logo.png')" class="logo" />
     </div>
     <SignUp />
   </v-container>
