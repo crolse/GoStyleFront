@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import SignInView from "../views/SignInView.vue";
 import SignUpView from "../views/SignUpView.vue";
+import codePromoView from "../views/listeCodePromoView.vue";
 import HelloWorld from "../components/HelloWorld.vue";
 
 Vue.use(VueRouter);
@@ -21,6 +22,11 @@ const routes = [
     path: "/signUp",
     name: "SignUpView",
     component: SignUpView,
+  },
+  {
+    path: "/listeCodePromoView",
+    name: "codePromoView",
+    component: codePromoView,
   },
 ];
 
