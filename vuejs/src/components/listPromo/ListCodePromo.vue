@@ -3,6 +3,9 @@
     <v-list two-line>
       <v-list-item-group>
         <v-subheader>Mes promotions : </v-subheader>
+        <div class="noData" v-if="promotions.length === 0">
+          Aucunes promotions actives.
+        </div>
         <template v-for="(promotion, index) in promotions">
           <v-list-item
             :key="promotion.title"
@@ -64,17 +67,15 @@ export default {
       this.dialog = !this.dialog;
       if (this.dialog === true) {
         this.idPromotion = id;
-      } else {
-        this.idPromotion = null;
       }
     },
     formatDate(date) {
       return moment(date).format("DD/MM/YYYY");
     },
   },
-  async created() {
+  created() {
     const userId = this.$store.state.user.id;
-    await this.$http
+    this.$http
       .get("http://localhost:8080/api/promotion/list/" + userId)
       .then((response) => {
         console.log(`get list code promo`, response);
@@ -89,4 +90,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.noData {
+  text-align: center;
+  margin-top: 35px;
+}
+</style>

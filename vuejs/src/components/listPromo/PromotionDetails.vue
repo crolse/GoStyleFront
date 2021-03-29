@@ -1,16 +1,5 @@
 <template>
   <v-card class="mx-auto" max-width="344" min-height="200" max-height="400">
-    <!-- <v-card-title class="headline">
-      {{ promotion.name }}
-    </v-card-title>
-
-    <v-card-subtitle>  </v-card-subtitle>
-    <v-card-subtitle> -{{ promotion.percentage * 100 }} % </v-card-subtitle>
-
-    <v-card-text>
-      {{ promotion.description }}
-    </v-card-text> -->
-
     <v-card-text class="pt-5 d-flex align-center flex-column">
       <div class=" overline">{{ promotion.name }}</div>
       <p class="display-2 text--primary">
@@ -26,11 +15,6 @@
         {{ promotion.description }}
       </p>
     </v-card-text>
-    <!-- 
-    <v-card-text>
-      Du {{ formatDate(promotion.dateStart) }} au
-      {{ formatDate(promotion.dateEnd) }}
-    </v-card-text> -->
 
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -61,24 +45,28 @@ export default {
     formatDate(date) {
       return moment(date).format("DD/MM/YYYY");
     },
+    getDetails() {
+      // if (this.idPromotion) {
+      this.$http
+        .get("http://localhost:8080/api/promotion/details/" + this.idPromotion)
+        .then((response) => {
+          console.log(`get code promo details`, response);
+          if (response.status === 200) {
+            this.promotion = response.data.promotion;
+          }
+        })
+        .catch(function(error) {
+          console.error(error);
+        });
+      // }
+    },
+  },
+  created() {
+    this.getDetails();
   },
   watch: {
-    async idPromotion() {
-      if (this.idPromotion) {
-        await this.$http
-          .get(
-            "http://localhost:8080/api/promotion/details/" + this.idPromotion
-          )
-          .then((response) => {
-            console.log(`get code promo details`, response);
-            if (response.status === 200) {
-              this.promotion = response.data.promotion;
-            }
-          })
-          .catch(function(error) {
-            console.error(error);
-          });
-      }
+    idPromotion() {
+      this.getDetails();
     },
   },
 };
