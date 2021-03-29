@@ -2,7 +2,7 @@
   <v-card elevation="0">
     <v-list two-line>
       <v-list-item-group>
-        <v-subheader>Mes pormotions : </v-subheader>
+        <v-subheader>Mes promotions : </v-subheader>
         <template v-for="(promotion, index) in promotions">
           <v-list-item :key="promotion.title" @click="handleDialog(promotion)">
             <template>
@@ -74,6 +74,9 @@ export default {
         this.openedPromotion = null;
       }
     },
+  },
+  created() {
+    console.log(` this.$store.state.user.id;`, this.$store.state.user.id);
   },
 };
 </script>

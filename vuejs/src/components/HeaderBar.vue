@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="deep-purple accent-4" app>
+  <v-app-bar color="primary" app>
     <v-img
       class="mx-2 "
       :src="require('../assets/logo.png')"
@@ -8,7 +8,7 @@
       contain
     />
 
-    <v-btn icon class="ml-auto">
+    <v-btn icon class="ml-auto" @click="disconnect">
       <v-icon>mdi-logout</v-icon>
     </v-btn>
   </v-app-bar>
@@ -20,6 +20,12 @@ export default {
   components: {},
   props: {
     title: String,
+  },
+  methods: {
+    disconnect() {
+      this.$store.commit("disconnect");
+      this.$router.push("/SignIn");
+    },
   },
 };
 </script>

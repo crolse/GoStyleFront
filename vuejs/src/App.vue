@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <HeaderBar v-if="logedIn" />
+    <HeaderBar v-if="isConnected" />
     <v-main>
       <router-view />
     </v-main>
-    <BottomBar v-if="logedIn" />
+    <BottomBar v-if="isConnected" />
   </v-app>
 </template>
 
@@ -17,8 +17,11 @@ export default {
     BottomBar,
     HeaderBar,
   },
-  data: () => ({
-    logedIn: true,
-  }),
+  data: () => ({}),
+  computed: {
+    isConnected() {
+      return this.$store.state.user.token;
+    },
+  },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-navigation v-model="value" app color="deep-purple accent-4" grow>
+  <v-bottom-navigation v-model="value" app color="primary" grow>
     <v-btn value="list" @click="$router.push('/ListPromo')">
       <span>Liste</span>
 

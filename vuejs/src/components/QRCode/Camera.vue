@@ -10,7 +10,23 @@ export default {
   },
   methods: {
     onDecode(decodedString) {
-      console.log(`result`, decodedString);
+      console.log(`Code promo`, decodedString);
+      console.log(`this.$store.state.user.id`, this.$store.state.user.token);
+
+      this.$http
+        .post("http://localhost:8080/api/promotion/add", {
+          userId: this.$store.state.user.id,
+          codePromo: decodedString,
+        })
+        .then((response) => {
+          console.log("getPromo", response);
+          if (response.status === 200) {
+            this.$router.push("/ListPromo");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     },
 
     async onInit(promise) {

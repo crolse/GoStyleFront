@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "",
-    redirect: "/ListPromo",
+    redirect: "/SignIn",
   },
   {
     path: "/ListPromo",
@@ -23,10 +23,6 @@ const routes = [
   {
     path: "/SignUp",
     component: () => import("@/views/authentication/SignUpView.vue"),
-  },
-  {
-    path: "/test",
-    component: () => import("@/components/HeaderBar.vue"),
   },
 ];
 
