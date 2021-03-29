@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card" elevation="1">
+  <v-card class="card" elevation="0">
     <v-card-title>
       Inscription
     </v-card-title>

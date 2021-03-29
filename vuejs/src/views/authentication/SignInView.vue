@@ -1,6 +1,6 @@
 <template>
   <v-container class="container">
-    <div>
+    <div class="position">
       <v-img :src="require('../../assets/logo_complet.png')" class="logo" />
     </div>
     <SignIn />
@@ -21,13 +21,14 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid red; */
   height: 100vh;
 }
 .logo {
   width: 150px;
+}
+.position {
+  margin-top: 100px;
 }
 </style>

@@ -1,21 +1,41 @@
 <template>
-  <v-card>
-    <v-card-title class="headline">
+  <v-card class="mx-auto" max-width="344" min-height="200" max-height="400">
+    <!-- <v-card-title class="headline">
       {{ promotion.name }}
     </v-card-title>
 
-    <v-card-text>
-      {{ promotion.description }}
-    </v-card-text>
+    <v-card-subtitle>  </v-card-subtitle>
+    <v-card-subtitle> -{{ promotion.percentage * 100 }} % </v-card-subtitle>
 
     <v-card-text>
-      Du {{ promotion.dateStart }} au {{ promotion.dateEnd }}
+      {{ promotion.description }}
+    </v-card-text> -->
+
+    <v-card-text class="pt-5 d-flex align-center flex-column">
+      <div class=" overline">{{ promotion.name }}</div>
+      <p class="display-2 text--primary">
+        {{ promotion.codePromo }}
+      </p>
+      <div class="display-1 text--primary" v-if="promotion.percentage">
+        - {{ promotion.percentage * 100 }} %
+      </div>
+      <div class="display-1 text--primary" v-else-if="promotion.valueReduction">
+        - {{ promotion.valueReduction }} €
+      </div>
+      <p class="mt-5">
+        {{ promotion.description }}
+      </p>
     </v-card-text>
+    <!-- 
+    <v-card-text>
+      Du {{ formatDate(promotion.dateStart) }} au
+      {{ formatDate(promotion.dateEnd) }}
+    </v-card-text> -->
 
     <v-card-actions>
       <v-spacer></v-spacer>
 
-      <v-btn color="green darken-1" text @click="handleDialog">
+      <v-btn color="primary" text @click="handleDialog">
         Fermer
       </v-btn>
     </v-card-actions>
@@ -23,20 +43,42 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   name: "PromotionDetails",
   data() {
-    return {};
+    return {
+      promotion: null,
+    };
   },
   props: {
-    promotion: {
-      type: Object,
-      default: () => ({}),
-    },
+    idPromotion: String,
   },
   methods: {
     handleDialog() {
       this.$emit("handleDialog");
+    },
+    formatDate(date) {
+      return moment(date).format("DD/MM/YYYY");
+    },
+  },
+  watch: {
+    async idPromotion() {
+      if (this.idPromotion) {
+        await this.$http
+          .get(
+            "http://localhost:8080/api/promotion/details/" + this.idPromotion
+          )
+          .then((response) => {
+            console.log(`get code promo details`, response);
+            if (response.status === 200) {
+              this.promotion = response.data.promotion;
+            }
+          })
+          .catch(function(error) {
+            console.error(error);
+          });
+      }
     },
   },
 };

@@ -4,12 +4,27 @@
       <v-list-item-group>
         <v-subheader>Mes promotions : </v-subheader>
         <template v-for="(promotion, index) in promotions">
-          <v-list-item :key="promotion.title" @click="handleDialog(promotion)">
+          <v-list-item
+            :key="promotion.title"
+            @click="handleDialog(promotion.codePromo)"
+          >
             <template>
               <v-list-item-content>
-                <v-list-item-title v-text="promotion.name" />
+                <v-list-item-title class="d-flex justify-space-between">
+                  <div>{{ promotion.name }}</div>
 
-                <v-list-item-subtitle v-text="promotion.description" />
+                  <div v-if="promotion.percentage">
+                    -{{ promotion.percentage * 100 }} %
+                  </div>
+                  <div v-else-if="promotion.valueReduction">
+                    -{{ promotion.valueReduction }} €
+                  </div>
+                </v-list-item-title>
+
+                <v-list-item-subtitle
+                  >Du {{ formatDate(promotion.dateStart) }} au
+                  {{ formatDate(promotion.dateEnd) }}</v-list-item-subtitle
+                >
               </v-list-item-content>
             </template>
           </v-list-item>
@@ -22,7 +37,7 @@
     <v-dialog v-model="dialog" max-width="290">
       <PromotionDetails
         @handleDialog="handleDialog"
-        :promotion="openedPromotion"
+        :idPromotion="idPromotion"
       />
     </v-dialog>
   </v-card>
@@ -30,6 +45,7 @@
 
 <script>
 import PromotionDetails from "./PromotionDetails";
+import moment from "moment";
 export default {
   name: "ListCodePromo",
   components: {
@@ -37,46 +53,38 @@ export default {
   },
   data() {
     return {
-      openedPromotion: null,
+      idPromotion: null,
       dialog: false,
-      promotions: [
-        {
-          name: "Promo 1",
-          percentage: 0.2,
-          description: "Nouvelle promotion sur ce produit",
-          dateStart: "12/03/2021",
-          dateEnd: "25/05/2021",
-        },
-        {
-          name: "Promo 2",
-          percentage: 0.2,
-          description: "Nouvelle promotion sur ce produit",
-          dateStart: "12/03/2021",
-          dateEnd: "25/05/2021",
-        },
-        {
-          name: "Promo 3",
-          percentage: 0.2,
-          description: "Nouvelle promotion sur ce produit",
-          dateStart: "12/03/2021",
-          dateEnd: "25/05/2021",
-        },
-      ],
+      promotions: [],
     };
   },
 
   methods: {
-    handleDialog(promotion) {
+    handleDialog(id) {
       this.dialog = !this.dialog;
       if (this.dialog === true) {
-        this.openedPromotion = promotion;
+        this.idPromotion = id;
       } else {
-        this.openedPromotion = null;
+        this.idPromotion = null;
       }
     },
+    formatDate(date) {
+      return moment(date).format("DD/MM/YYYY");
+    },
   },
-  created() {
-    console.log(` this.$store.state.user.id;`, this.$store.state.user.id);
+  async created() {
+    const userId = this.$store.state.user.id;
+    await this.$http
+      .get("http://localhost:8080/api/promotion/list/" + userId)
+      .then((response) => {
+        console.log(`get list code promo`, response);
+        if (response.status === 200) {
+          this.promotions = response.data.promotion;
+        }
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
   },
 };
 </script>

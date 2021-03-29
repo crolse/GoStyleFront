@@ -18,5 +18,22 @@
 export default {
   name: "BottomBar",
   data: () => ({ value: "list" }),
+  methods: {
+    getCurrentRoute() {
+      if (this.$route.name === "ListPromo") {
+        this.value = "list";
+      } else if (this.$route.name === "QRCode") {
+        this.value = "qrcode";
+      }
+    },
+  },
+  created() {
+    this.getCurrentRoute();
+  },
+  watch: {
+    $route() {
+      this.getCurrentRoute();
+    },
+  },
 };
 </script>
