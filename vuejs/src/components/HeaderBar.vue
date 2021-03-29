@@ -19,14 +19,14 @@ export default {
   name: "HeaderBar",
   components: {},
   props: {
-    title: String,
+    title: String
   },
   methods: {
     disconnect() {
       this.$store.commit("disconnect");
       this.$router.push("/SignIn");
-    },
-  },
+    }
+  }
 };
 </script>
 

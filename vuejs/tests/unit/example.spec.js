@@ -1,12 +1,8 @@
-import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import * as axios from 'axios';
 
-describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    });
-    expect(wrapper.text()).toMatch(msg);
-  });
-});
+describe('testConnexionAPI', function() {
+	it('should work', ()=> {
+		return axios.get('http://localhost:8080').then(result => {
+		expect(result.status).toEqual(200)
+		})	})
+} )

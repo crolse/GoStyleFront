@@ -44,7 +44,7 @@ export default {
     mail: "",
     firstName: "",
     lastName: "",
-    rules: [(value) => !!value || "Champ requis."],
+    rules: [value => !!value || "Champ requis."]
   }),
   methods: {
     addUser() {
@@ -53,19 +53,19 @@ export default {
           mail: this.mail,
           lastName: this.lastName,
           firstName: this.firstName,
-          password: this.password,
+          password: this.password
         })
-        .then((response) => {
+        .then(response => {
           console.log("signup", response);
           if (response.status === 200) {
             this.$router.push("/SignIn");
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -15,13 +15,13 @@ export default {
   name: "App",
   components: {
     BottomBar,
-    HeaderBar,
+    HeaderBar
   },
   data: () => ({}),
   computed: {
     isConnected() {
       return this.$store.state.user.token;
-    },
-  },
+    }
+  }
 };
 </script>

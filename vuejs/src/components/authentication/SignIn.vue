@@ -40,27 +40,27 @@ export default {
   data: () => ({
     mail: "",
     password: "",
-    rules: [(value) => !!value || "Champ requis."],
+    rules: [value => !!value || "Champ requis."]
   }),
   methods: {
     connect() {
       this.$http
         .post("http://localhost:8080/api/user/connection", {
           mail: this.mail,
-          password: this.password,
+          password: this.password
         })
-        .then((response) => {
+        .then(response => {
           console.log("signin", response);
           if (response.status === 200) {
             this.$store.commit("connect", response.data);
             this.$router.push("/ListPromo");
           }
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

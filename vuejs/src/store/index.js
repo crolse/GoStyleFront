@@ -7,8 +7,8 @@ export default new Vuex.Store({
   state: {
     user: {
       token: null,
-      id: null,
-    },
+      id: null
+    }
   },
   mutations: {
     disconnect(state) {
@@ -18,8 +18,8 @@ export default new Vuex.Store({
     connect(state, payload) {
       state.user.token = payload.token;
       state.user.id = payload.userId;
-    },
+    }
   },
   actions: {},
-  modules: {},
+  modules: {}
 });
