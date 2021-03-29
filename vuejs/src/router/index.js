@@ -1,32 +1,32 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import SignInView from "../views/SignInView.vue";
-import SignUpView from "../views/SignUpView.vue";
-import codePromoView from "../views/listeCodePromoView.vue";
-import HelloWorld from "../components/HelloWorld.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "HelloWorld",
-    component: HelloWorld,
+    path: "",
+    redirect: "/ListPromo",
   },
   {
-    path: "/signIn",
-    name: "SignInView",
-    component: SignInView,
+    path: "/ListPromo",
+    component: () => import("@/views/tabs/ListCodePromoView.vue"),
   },
   {
-    path: "/signUp",
-    name: "SignUpView",
-    component: SignUpView,
+    path: "/QRCode",
+    component: () => import("@/views/tabs/QRCodeView.vue"),
   },
   {
-    path: "/listeCodePromoView",
-    name: "codePromoView",
-    component: codePromoView,
+    path: "/SignIn",
+    component: () => import("@/views/authentication/SignInView.vue"),
+  },
+  {
+    path: "/SignUp",
+    component: () => import("@/views/authentication/SignUpView.vue"),
+  },
+  {
+    path: "/test",
+    component: () => import("@/components/HeaderBar.vue"),
   },
 ];
 

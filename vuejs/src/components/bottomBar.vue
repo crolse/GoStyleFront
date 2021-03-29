@@ -1,48 +1,22 @@
 <template>
-<div class="footer">
-    		<v-btn class="button" id="leftB">
-    			<v-icon>
-    			mdi-format-list-bulleted-square
-    			</v-icon>
-    		</v-btn>
-    		<v-btn class="button" id="rightB">
-    			<v-icon>
-    			 mdi-qrcode-scan
-    			</v-icon>
-    		</v-btn>
-    	</div>
+  <v-bottom-navigation v-model="value">
+    <v-btn value="list" @click="$router.push('/ListPromo')">
+      <span>Liste</span>
+
+      <v-icon>mdi-format-list-bulleted</v-icon>
+    </v-btn>
+
+    <v-btn value="qrcode" @click="$router.push('/QRCode')">
+      <span>QR code</span>
+
+      <v-icon>mdi-qrcode-scan</v-icon>
+    </v-btn>
+  </v-bottom-navigation>
 </template>
 
 <script>
 export default {
-    name: "BottomBar"
-  }
+  name: "BottomBar",
+  data: () => ({ value: "list" }),
+};
 </script>
-
-<style>
-
-
-#leftB{
-	background-color: red;
-	color: white;
-	border-radius: 0px;
-}
-
-#rightB{
-	background-color: black;
-	color: white;
-	border-radius: 0px;
-}
-.button{
-	text-align: center;
-	width:50%;
-	
-}
-
-.footer{
-	position: sticky;
-	bottom:0;
-}
-
-</style>
- 

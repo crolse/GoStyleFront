@@ -1,19 +1,19 @@
 <template>
   <v-container class="container">
     <div>
-      <v-img :src="require('../assets/logo.png')" class="logo" />
+      <v-img :src="require('../../assets/logo_complet.png')" class="logo" />
     </div>
-    <SignIn />
+    <SignUp />
   </v-container>
 </template>
 
 <script>
-import SignIn from "@/components/authentication/SignIn";
+import SignUp from "@/components/authentication/SignUp";
 
 export default {
-  name: "SignInView",
+  name: "SignUpView",
   components: {
-    SignIn,
+    SignUp,
   },
 };
 </script>

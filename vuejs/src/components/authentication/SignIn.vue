@@ -8,7 +8,7 @@
       <v-text-field label="Mot de passe*" :rules="rules" hide-details="auto" />
     </v-card-text>
     <v-card-actions class="actions">
-      <v-btn color="primary" @click="$router.push('/listeCodePromoView')">
+      <v-btn color="primary" @click="$router.push('/ListPromo')">
         se connecter
       </v-btn>
       <v-btn
