@@ -12,11 +12,20 @@ export default {
     onDecode(decodedString) {
       console.log(`Code promo`, decodedString);
 
+      const token = this.$store.state.user.token;
+      const config = {
+        headers: { Authorization: "Bearer " + token },
+      };
+
       this.$http
-        .post("http://localhost:8080/api/promotion/add", {
-          userId: this.$store.state.user.id,
-          codePromo: decodedString,
-        })
+        .post(
+          "http://localhost:8080/api/promotion/add",
+          {
+            userId: this.$store.state.user.id,
+            codePromo: decodedString,
+          },
+          config
+        )
         .then((response) => {
           console.log("getPromo", response);
           if (response.status === 200) {

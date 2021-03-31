@@ -75,8 +75,12 @@ export default {
   },
   created() {
     const userId = this.$store.state.user.id;
+    const token = this.$store.state.user.token;
+    const config = {
+      headers: { Authorization: "Bearer " + token },
+    };
     this.$http
-      .get("http://localhost:8080/api/promotion/list/" + userId)
+      .get("http://localhost:8080/api/promotion/list/" + userId, config)
       .then((response) => {
         console.log(`get list code promo`, response);
         if (response.status === 200) {

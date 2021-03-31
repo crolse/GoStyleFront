@@ -47,8 +47,15 @@ export default {
     },
     getDetails() {
       // if (this.idPromotion) {
+      const token = this.$store.state.user.token;
+      const config = {
+        headers: { Authorization: "Bearer " + token },
+      };
       this.$http
-        .get("http://localhost:8080/api/promotion/details/" + this.idPromotion)
+        .get(
+          "http://localhost:8080/api/promotion/details/" + this.idPromotion,
+          config
+        )
         .then((response) => {
           console.log(`get code promo details`, response);
           if (response.status === 200) {
